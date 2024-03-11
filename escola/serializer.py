@@ -22,3 +22,15 @@ class MatriculaSerializer(serializers.ModelSerializer):
         model = Matricula
         exclude = []  # Outra forma de mostrar todos os campos do model
         # Indica que não vai excluir nenhum campo do model
+
+class ListaMatriculasAlunoSerializer(serializers.ModelSerializer):
+    curso = serializers.ReadOnlyField(source='curso.descricao')
+    # Mostra no nome do campo a descrição do curso
+    periodo = serializers.SerializerMethodField()
+    # Mostra o nome do campo periodo
+    class Meta:
+        model = Matricula
+        fields = ['curso', 'periodo']
+    def get_periodo(self, obj):
+        return obj.get_periodo_display()
+        # Retorna o valor do campo periodo em formato de texto
