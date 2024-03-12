@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno
+from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno, ListaAlunosMatriculados
 from rest_framework import routers
 
 # ROUTER é uma forma de agrupar as views comuns em um único local
@@ -13,5 +13,6 @@ router.register('matriculas', MatriculasViewSet, basename='Matriculas')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),  # Inclui as rotas do router
-    path('aluno/<int:pk>/matricula/', ListaMatriculasAluno.as_view())
+    path('aluno/<int:pk>/matriculas/', ListaMatriculasAluno.as_view()),
+    path('curso/<int:pk>/matriculas/', ListaAlunosMatriculados.as_view())
 ]
