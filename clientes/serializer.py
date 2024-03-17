@@ -14,7 +14,7 @@ class ClienteSerializer(serializers.ModelSerializer):
         """Fazendo a validação do CPF"""
         if not cpf_valido(data['cpf']):
             # data["cpf"] = pegando o valor do campo cpf
-            raise serializers.ValidationError({'cpf': 'O CPF deve ter 11 dígitos'})
+            raise serializers.ValidationError({'cpf': 'Número de CPF inválido'})
             # {'campo': 'mensagem de erro'}
     
         """Fazendo a validação do nome"""
