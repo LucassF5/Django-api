@@ -22,6 +22,7 @@ class CursosViewSet(viewsets.ModelViewSet):
 
 
 class MatriculasViewSet(viewsets.ModelViewSet):
+    """Listando todas as matrículas"""
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
     authentication_classes = [BasicAuthentication]
