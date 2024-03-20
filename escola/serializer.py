@@ -40,3 +40,8 @@ class ListaAlunosMatriculadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
         fields = ['aluno']
+
+class AlunoSerializerV2(serializers.ModelSerializer):
+    class Meta:  # Classe que define o modelo que será serializado
+        model = Aluno
+        fields = ['id', 'nome', 'celular', 'rg', 'cpf', 'data_nascimento']
